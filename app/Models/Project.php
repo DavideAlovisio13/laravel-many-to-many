@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Type;
+use App\Models\Technology;
 
 
 
@@ -25,6 +27,7 @@ class Project extends Model
         return $slug;
     }
 
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -33,5 +36,10 @@ class Project extends Model
     public function type()
     {
         return $this->belongsTo(Type::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Technology::class);
     }
 }
