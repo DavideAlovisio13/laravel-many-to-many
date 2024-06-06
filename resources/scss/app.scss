@@ -1,0 +1,99 @@
+@use './partials/variables'as *;
+
+$fa-font-path: "../fonts/webfonts" !default;
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+$pagination-active-bg: $red-color !default;
+$pagination-color: $red-color !default;
+$pagination-active-color:white !default;
+$pagination-active-border-color: grey !default;
+
+@import '~bootstrap/scss/bootstrap';
+
+#admin {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+
+    #sidebar {
+        background-color: $black;
+        padding: 0.5rem;
+        color: $white;
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #000000;
+        background-image: url("/images/slanted-gradient.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        #top-sidebar {
+            .nav-link {
+                color: $white;
+
+                &:hover {
+                    color: $red-color !important;
+                    transform: scale(1.1) translateX(5px);
+                    transition: 0.5s;
+                    transition-timing-function: ease;
+                }
+            }
+        }
+    }
+
+    #wrapper {
+        width: calc(100% - 200px);
+        height: 100%;
+        background-color: $black-color;
+        overflow-y: auto;
+    }
+
+    .card {
+        border-radius: 10px;
+        background-image: url("/images/slanted-gradient.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none !important;
+        box-shadow: 0 0 16px $red-color;
+
+        .table-group-divider {
+            border-top: $red-color 2px solid !important;
+        }
+
+        .social_card {
+
+            &:hover {
+                transform: scale(1.1);
+                transition: 0.5s;
+                transition-timing-function: ease;
+                color: $red-color !important;
+            }
+
+        }
+    }
+
+    canvas {
+        padding: 2rem;
+        border-radius: 1rem;
+        background: transparent;
+        box-shadow: 0 0 16px $red-color;
+        background-image: url("/images/slanted-gradient.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+
+header {
+    min-height: 70px;
+
+    .img-profile {
+        height: 2rem;
+        width: 2rem;
+    }
+}
