@@ -30,7 +30,8 @@ class UpdateProjectRequest extends FormRequest
             'create_at' => 'required',
             'slug' => 'required',
             'user_id' => 'nullable|exists:users,id',
-            'types_id' => 'nullable|exists:types,id'
+            'types_id' => 'nullable|exists:types,id',
+            'technologies_id' => 'nullable|exists:technologies,id'
         ];
     }
 
