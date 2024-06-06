@@ -22,7 +22,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.create');
     }
 
     /**
@@ -30,7 +30,13 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        $form_data = $request->all();
+        $form_data['slug'] = Type::generateSlug($form_data['name']);
+        $newType = Type::create($form_data);
+        return redirect()->route('admin.categories.show', $newType->slug);
     }
 
     /**
@@ -46,7 +52,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('types'));
     }
 
     /**
@@ -54,7 +60,15 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        $form_data = $request->all();
+        if ($type->name !== $form_data['name']) {
+            $form_data['slug'] = Type::generateSlug($form_data['name']);
+        }
+        $type->update($form_data);
+        return redirect()->route('admin.categories.show', $type->slug);
     }
 
     /**
@@ -62,6 +76,7 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return redirect()->route('admin.types.index')->with('message', $type->name . ' è stato eliminato');
     }
 }
