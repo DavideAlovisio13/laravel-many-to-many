@@ -10,8 +10,8 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-                        value="{{ old('name') }}" minlength="3" maxlength="255">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                        name="name" value="{{ old('name') }}" minlength="3" maxlength="255">
                     @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -52,6 +52,20 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     <div id="titleHelp" class="form-text text-white">Inserire un valore</div>
+                </div>
+                <div class="mb-3">
+                    <label for="type_id" class="form-label text-white">Select Type</label>
+                    <select name="type_id" id="type_id" class="form-control @error('type_id') is-invalid @enderror">
+                        <option value="">Select Type</option>
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
+                                {{ $type->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('type_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <button type="submit">Crea</button>

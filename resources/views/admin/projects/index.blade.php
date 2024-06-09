@@ -21,6 +21,7 @@
                                     <th scope="col" class="text-danger bg-transparent">Title</th>
                                     <th scope="col" class="text-danger bg-transparent">Description</th>
                                     <th scope="col" class="text-danger bg-transparent">Create at</th>
+                                    <th scope="col" class="text-danger bg-transparent">Type</th>
                                     <th scope="col" class="text-danger bg-transparent">Actions</th>
                                 </tr>
                             </thead>
@@ -34,6 +35,7 @@
                                         </td>
                                         <td class="bg-transparent text-white border-bottom-0">{{ $project->created_at }}
                                         </td>
+                                        <td class="bg-transparent text-white border-bottom-0">{{ $project->type_id }}</td>
                                         <td
                                             class=" bg-transparent text-white d-flex border-bottom-0 flex-column justify-content-center align-items-center">
                                             <a href="{{ route('admin.projects.show', $project->slug) }}"><i

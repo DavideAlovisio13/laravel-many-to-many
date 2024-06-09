@@ -36,7 +36,7 @@ class TypeController extends Controller
         $form_data = $request->all();
         $form_data['slug'] = Type::generateSlug($form_data['name']);
         $newType = Type::create($form_data);
-        return redirect()->route('admin.categories.show', $newType->slug);
+        return redirect()->route('admin.types.show', $newType->slug);
     }
 
     /**
@@ -52,7 +52,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        return view('admin.types.edit', compact('types'));
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -68,7 +68,7 @@ class TypeController extends Controller
             $form_data['slug'] = Type::generateSlug($form_data['name']);
         }
         $type->update($form_data);
-        return redirect()->route('admin.categories.show', $type->slug);
+        return redirect()->route('admin.types.show', $type->slug);
     }
 
     /**

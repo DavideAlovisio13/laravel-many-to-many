@@ -7,7 +7,7 @@
             <div class="alert alert-success">{{ session()->get('message') }}</div>
         @endif
         <div class="d-flex justify-content-between align-items-center py-4">
-            <h1 class="text-danger">Projects</h1>
+            <h1 class="text-danger">Types</h1>
         </div>
         <div class="row">
             <div class="col-sm-8 ">
@@ -18,34 +18,26 @@
                                 <tr>
                                     <th scope="col" class="text-danger bg-transparent">Id</th>
                                     <th scope="col" class="text-danger bg-transparent">Name</th>
-                                    <th scope="col" class="text-danger bg-transparent">Title</th>
-                                    <th scope="col" class="text-danger bg-transparent">Description</th>
-                                    <th scope="col" class="text-danger bg-transparent">Create at</th>
                                     <th scope="col" class="text-danger bg-transparent">Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
-                                @foreach ($projects as $project)
+                                @foreach ($types as $type)
                                     <tr>
-                                        <td class="bg-transparent text-white border-bottom-0">{{ $project->id }}</td>
-                                        <td class="bg-transparent text-white border-bottom-0">{{ $project->name }}</td>
-                                        <td class="bg-transparent text-white border-bottom-0">{{ $project->title }}</td>
-                                        <td class="bg-transparent text-white border-bottom-0">{{ $project->description }}
-                                        </td>
-                                        <td class="bg-transparent text-white border-bottom-0">{{ $project->created_at }}
-                                        </td>
+                                        <td class="bg-transparent text-white border-bottom-0">{{ $type->id }}</td>
+                                        <td class="bg-transparent text-white border-bottom-0">{{ $type->name }}</td>
                                         <td
                                             class=" bg-transparent text-white d-flex border-bottom-0 flex-column justify-content-center align-items-center">
-                                            <a href="{{ route('admin.projects.show', $project->slug) }}"><i
+                                            <a href="{{ route('admin.types.show', $type->slug) }}"><i
                                                     class="fa-solid text-danger fa-eye"></i></a>
-                                            <a href="{{ route('admin.projects.edit', $project->slug) }}"><i
+                                            <a href="{{ route('admin.types.edit', $type->slug) }}"><i
                                                     class="fa-solid text-danger fa-pen"></i></a>
-                                            <form action="{{ route('admin.projects.destroy', $project->slug) }}"
+                                            <form action="{{ route('admin.types.destroy', $type->slug) }}"
                                                 method="POST" class="d-inline-block">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="delete-button border-0 bg-transparent"
-                                                    data-item-title="{{ $project->title }}">
+                                                    data-item-title="{{ $type->name }}">
                                                     <i class="fa-solid text-danger fa-trash"></i>
                                                 </button>
                                             </form>
@@ -54,9 +46,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{$projects->links('vendor.pagination.bootstrap-5')}}
                     </div>
-                    <a href="{{ route('admin.projects.create') }}" class="btn btn-danger">Create a new post</a>
+                    <a href="{{ route('admin.types.create') }}" class="btn btn-danger">Create a new post</a>
                 </div>
             </div>
             <div class="col-sm-4">
